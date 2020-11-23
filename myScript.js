@@ -40,7 +40,7 @@ function listAllToDos(){
                   
                     todoLabel.innerHTML=todos[i].text.strike();
                     // var strikeText = document.createElement("strike");
-                    console.log(todos[i].text.strike());
+                    //console.log(todos[i].text.strike());
                     update(todos[i].id);
                 }
                 checkbox.addEventListener("click", function(event){
@@ -124,8 +124,22 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             button.style.backgroundColor = "#ffbdaf";
             li.id=todo.id;
        
+            if (todo["completed"] == true){
+                //var strikeText = document.getElementById(i).parentElement.childNodes[1];
+              
+                todoLabel.innerHTML=todo.text.strike();
+                // var strikeText = document.createElement("strike");
+                //console.log(todos[i].text.strike());
+                update(todo.id);
+            }
             checkbox.addEventListener("click", function(event){
                
+                var strikeText = checkbox.parentElement.childNodes[1];
+                  
+                strikeText.innerHTML=todo.text.strike();
+                    // var strikeText = document.createElement("strike");
+                    //console.log(todos[event.target.id].text.strike());
+                    //update(todos[event.target.id].id);
                 todoLabel.innerHTML=todo.text.strike();
                 update(todo.id);
                 
@@ -207,7 +221,7 @@ function update(id){
     var data = {
         completed: true
     }
-     console.log(document.getElementById(id));
+     //console.log(document.getElementById(id));
      //console.log("this is the parent text" + document.getElementById(id).text);
 
      // Initalize AJAX Request
@@ -238,7 +252,7 @@ function update(id){
  
      xhttp3.setRequestHeader("Content-type", "application/json");
      xhttp3.setRequestHeader("x-api-key", "f32d02-3f32cc-c59414-4b288d-c7f6a6");
-     xhttp3.send();
+     xhttp3.send(JSON.stringify(data));
 }
 
 function remove(id){
