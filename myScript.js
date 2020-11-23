@@ -18,6 +18,7 @@ function listAllToDos(){
                 checkbox.innerHTML = "Done";
                 checkbox.id=i;
                 checkbox.style.marginRight = "10px";
+                checkbox.style.backgroundColor = "#ceffc9";
                 li.appendChild(checkbox);
 
                 var todoLabel = document.createElement("label");
@@ -30,6 +31,7 @@ function listAllToDos(){
                 //button.className = "close";
                 button.innerHTML = "Delete";
                 button.style.cssFloat = "right";
+                button.style.backgroundColor = "#ffbdaf";
                 li.appendChild(button);
                 button.id=i;
 
@@ -108,6 +110,7 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             var checkbox = document.createElement("button");
             checkbox.innerHTML = "Done";
             checkbox.style.marginRight = "10px";
+            checkbox.style.backgroundColor = "#ceffc9";
             li.appendChild(checkbox);
             
             var todoLabel = document.createElement("label");
@@ -118,6 +121,7 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             //button.className = "close";
             button.innerHTML = "Delete";
             button.style.cssFloat = "right";
+            button.style.backgroundColor = "#ffbdaf";
             li.id=todo.id;
        
             checkbox.addEventListener("click", function(event){
@@ -163,33 +167,7 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
 });
 
 
-
-
-//updates the list when the item is closed
-// var closeButtons = document.getElementsByClassName("close");
-// console.log(closeButtons.length);
-// for(i=0; i<closeButtons.length; i++){
-//     console.log("for loop started");
-//     closeButtons[i].addEventListener("click", (event)=>{
-//         console.log("button was clicked");
-//        //event.preventDefault();
-    
-//         // Setting variable for ToDo id
-//         var id = closeButtons[i].parentElement.id;
-
-//         //call retrieve, which gets the todo
-//         retrieve(id);
-
-//         //call update, which sends a put request
-//         update(id);
-        
-//         //call remove function, which deletes the todo
-//         remove(id);
-//     });
-        
-// }
-
-
+//retrieves info for todo, calls GET
 function retrieve(id){
     
     // Initalize AJAX Request
@@ -254,12 +232,13 @@ function update(id){
  
          }
      };
+    //  console.log(data.completed);
  
      xhttp3.open("PUT", "https://cse204.work/todos/"+id, true);
  
      xhttp3.setRequestHeader("Content-type", "application/json");
      xhttp3.setRequestHeader("x-api-key", "f32d02-3f32cc-c59414-4b288d-c7f6a6");
-     xhttp3.send(JSON.stringify(data));
+     xhttp3.send();
 }
 
 function remove(id){
