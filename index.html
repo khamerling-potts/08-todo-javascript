@@ -11,21 +11,24 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>To Do list</h1>
-
           <div class="row">
             <div class="col-sm-12 addbar">
               <form class="addform" id="addform">
-                <!-- <label for="add">To Do List</label> -->
+                <label for="add" class="formlabel">To Do List</label>
                 <div class="input-group">
                   <input type="text" class="form-control" id="add" placeholder="New item">
                   <div class="input-group-addon">
-                    <button type="button" class="btn-primary">Add</button>
+                    <input type = "submit" value="Add Item">
+                    <!--<button type="button" class="btn-primary">Add</button> -->
                   </div>
                 </div>
               </form>
             </div>
-
-            <ul id="todoList">
-            </ul>
+            <div class="col-sm-12 list">
+              <ul id="todoList">
+              </ul>
+            </div>
+          </div>
+            
+            
     </body>

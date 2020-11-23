@@ -13,20 +13,26 @@ function listAllToDos(){
             for(i=0; i<todos.length; i++){
                 //display all list items with close buttons
                 var li = document.createElement("li");
+                
                 var checkbox = document.createElement("button");
-                checkbox.innerHTML = "done";
+                checkbox.innerHTML = "Done";
                 checkbox.id=i;
+                checkbox.style.marginRight = "10px";
                 li.appendChild(checkbox);
+
                 var todoLabel = document.createElement("label");
                 todoLabel.id = i;
                 todoLabel.innerHTML = todos[i].text;
                 li.id=todos[i].id;
                 li.appendChild(todoLabel);
+
                 var button = document.createElement("button");
-                button.className = "close";
+                //button.className = "close";
                 button.innerHTML = "Delete";
+                button.style.cssFloat = "right";
                 li.appendChild(button);
                 button.id=i;
+
                 if (todos[i]["completed"] == true){
                     //var strikeText = document.getElementById(i).parentElement.childNodes[1];
                   
@@ -81,8 +87,6 @@ listAllToDos();
 //Make new todo when form is submitted
 document.getElementById("addform").addEventListener("submit", (event)=>{
     event.preventDefault();
-    console.log("the add form submitted");
-
     // Setting variable for form input (get from HTML form)
     var data = {
        text: document.getElementById("add").value
@@ -102,16 +106,18 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             //w3schools helped me figure out how to create a new list item
             var li = document.createElement("li");
             var checkbox = document.createElement("button");
-                checkbox.innerHTML = "done";
-                li.appendChild(checkbox);
+            checkbox.innerHTML = "Done";
+            checkbox.style.marginRight = "10px";
+            li.appendChild(checkbox);
             
             var todoLabel = document.createElement("label");
 
             todoLabel.innerHTML = todo.text;
             li.appendChild(todoLabel);
             var button = document.createElement("button");
-            button.className = "close";
+            //button.className = "close";
             button.innerHTML = "Delete";
+            button.style.cssFloat = "right";
             li.id=todo.id;
        
             checkbox.addEventListener("click", function(event){
@@ -153,6 +159,7 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
     xhttp2.setRequestHeader("x-api-key", "f32d02-3f32cc-c59414-4b288d-c7f6a6");
     xhttp2.send(JSON.stringify(data));
     
+    document.getElementById("addform").reset();
 });
 
 
