@@ -52,15 +52,14 @@ function listAllToDos(){
                     todos[event.target.id].completed = "true";
                     //update(todos[event.target.id].id);
                     
-                    // todoLabel.appendChild(strikeText);
-                    // strikeText.appendChild(todos[event.target.id].text);
                 });
                 button.addEventListener("click", function(event){
-                    console.log("button clicked");
-                    console.log(event.target);
+                    //console.log("button clicked");
+                    //console.log(event.target);
+                    //console.log(event.target.parentElement.parentElement);
+                    //console.log(event.target.id);
+                    
                     // Setting variable for ToDo id
-                    console.log(event.target.parentElement.parentElement);
-                    console.log(event.target.id);
                     var id = todos[event.target.id].id;
 
                     //call retrieve, which gets the todo
@@ -131,7 +130,8 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
                 todoLabel.innerHTML=todo.text.strike();
                 // var strikeText = document.createElement("strike");
                 //console.log(todos[i].text.strike());
-                update(todo.id);
+                todo.completed = "true";
+                //update(todo.id);
             }
             checkbox.addEventListener("click", function(event){
                
