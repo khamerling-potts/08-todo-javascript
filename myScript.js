@@ -49,7 +49,8 @@ function listAllToDos(){
                     strikeText.innerHTML=todos[event.target.id].text.strike();
                     // var strikeText = document.createElement("strike");
                     console.log(todos[event.target.id].text.strike());
-                    update(todos[event.target.id].id);
+                    todos[event.target.id].completed = "true";
+                    //update(todos[event.target.id].id);
                     
                     // todoLabel.appendChild(strikeText);
                     // strikeText.appendChild(todos[event.target.id].text);
