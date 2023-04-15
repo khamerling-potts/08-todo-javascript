@@ -28,7 +28,6 @@ function listAllToDos(){
                 li.appendChild(todoLabel);
 
                 var button = document.createElement("button");
-                //button.className = "close";
                 button.innerHTML = "Delete";
                 button.style.cssFloat = "right";
                 button.style.backgroundColor = "#ffbdaf";
@@ -36,28 +35,18 @@ function listAllToDos(){
                 button.id=i;
 
                 if (todos[i]["completed"] == true){
-                    //var strikeText = document.getElementById(i).parentElement.childNodes[1];
-                  
                     todoLabel.innerHTML=todos[i].text.strike();
-                    // var strikeText = document.createElement("strike");
-                    //console.log(todos[i].text.strike());
                     update(todos[i].id);
                 }
                 checkbox.addEventListener("click", function(event){
                    var strikeText = document.getElementById(event.target.id).parentElement.childNodes[1];
                   
                     strikeText.innerHTML=todos[event.target.id].text.strike();
-                    // var strikeText = document.createElement("strike");
                     console.log(todos[event.target.id].text.strike());
                     todos[event.target.id].completed = "true";
-                    //update(todos[event.target.id].id);
                     
                 });
                 button.addEventListener("click", function(event){
-                    //console.log("button clicked");
-                    //console.log(event.target);
-                    //console.log(event.target.parentElement.parentElement);
-                    //console.log(event.target.id);
                     
                     // Setting variable for ToDo id
                     var id = todos[event.target.id].id;
@@ -118,29 +107,21 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             todoLabel.innerHTML = todo.text;
             li.appendChild(todoLabel);
             var button = document.createElement("button");
-            //button.className = "close";
             button.innerHTML = "Delete";
             button.style.cssFloat = "right";
             button.style.backgroundColor = "#ffbdaf";
             li.id=todo.id;
        
             if (todo["completed"] == true){
-                //var strikeText = document.getElementById(i).parentElement.childNodes[1];
               
                 todoLabel.innerHTML=todo.text.strike();
-                // var strikeText = document.createElement("strike");
-                //console.log(todos[i].text.strike());
                 todo.completed = "true";
-                //update(todo.id);
             }
             checkbox.addEventListener("click", function(event){
                
                 var strikeText = checkbox.parentElement.childNodes[1];
                   
                 strikeText.innerHTML=todo.text.strike();
-                    // var strikeText = document.createElement("strike");
-                    //console.log(todos[event.target.id].text.strike());
-                    //update(todos[event.target.id].id);
                 todoLabel.innerHTML=todo.text.strike();
                 update(todo.id);
                 
@@ -165,10 +146,8 @@ document.getElementById("addform").addEventListener("submit", (event)=>{
             console.log(todo);
 
         } else if (this.readyState == 4) {
-
             // this.status !== 200, error from server
             console.log(this.responseText);
-
         }
     };
 
@@ -201,10 +180,8 @@ function retrieve(id){
             console.log(todo);
 
         } else if (this.readyState == 4) {
-
             // this.status !== 200, error from server
             console.log(this.responseText);
-
         }
     };
 
@@ -222,8 +199,6 @@ function update(id){
     var data = {
         completed: true
     }
-     //console.log(document.getElementById(id));
-     //console.log("this is the parent text" + document.getElementById(id).text);
 
      // Initalize AJAX Request
      var xhttp3 = new XMLHttpRequest();
@@ -247,7 +222,6 @@ function update(id){
  
          }
      };
-    //  console.log(data.completed);
  
      xhttp3.open("PUT", "https://cse204.work/todos/"+id, true);
  
@@ -267,9 +241,6 @@ function remove(id){
          if (this.readyState == 4 && this.status == 200) {
  
              // parse JSON response
-             //var todo = JSON.parse(this.responseText);
-             //remove todo and its button from the html
-            //document.getElementById(id).removeChild;
             document.getElementById(id).remove();
  
              //console.log(todo);
